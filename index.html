@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al Basit Real Estate | Luxury Properties</title>
+    <title>Al Basit Real Estate | Luxury Properties & Investments</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -20,14 +21,14 @@
             overflow-x: hidden;
         }
         .hero-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
         }
         .property-card {
             transition: all 0.3s ease;
         }
         .property-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
         .section-title {
             font-family: 'Playfair Display', serif;
@@ -52,17 +53,74 @@
             opacity: 0;
             transform: translateY(30px);
         }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+        .logo-container {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .logo-text {
+            font-weight: 700;
+            color: white;
+            font-size: 1.5rem;
+        }
+        .hero-image {
+            border-radius: 20px;
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+            box-shadow: -20px 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        .search-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f59e0b, #eab308);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .property-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10;
+        }
+        .agent-card {
+            transition: all 0.3s ease;
+        }
+        .agent-card:hover {
+            transform: translateY(-5px);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
+    <nav class="fixed w-full bg-white/95 backdrop-blur-md z-50 shadow-sm">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold text-xl">AB</div>
+            <div class="flex items-center space-x-3">
+                <div class="logo-container">
+                    <span class="logo-text">AB</span>
+                </div>
                 <div>
                     <h1 class="text-xl font-bold text-gray-800">Al Basit Real Estate</h1>
-                    <p class="text-xs text-gray-600">Luxury Properties</p>
+                    <p class="text-xs text-gray-600">Luxury Properties & Investments</p>
                 </div>
             </div>
             
@@ -71,12 +129,13 @@
                 <a href="#about" class="nav-link text-gray-700 font-medium">About</a>
                 <a href="#properties" class="nav-link text-gray-700 font-medium">Properties</a>
                 <a href="#services" class="nav-link text-gray-700 font-medium">Services</a>
+                <a href="#agents" class="nav-link text-gray-700 font-medium">Agents</a>
                 <a href="#contact" class="nav-link text-gray-700 font-medium">Contact</a>
             </div>
             
             <div class="flex items-center space-x-4">
-                <button class="hidden md:block bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition duration-300">
-                    Schedule a Tour
+                <button class="hidden md:block bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition duration-300 shadow-md">
+                    <i class="fas fa-phone mr-2"></i> Contact Us
                 </button>
                 <button class="md:hidden text-gray-700">
                     <i class="fas fa-bars text-xl"></i>
@@ -86,33 +145,107 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-gradient pt-24 pb-20 md:pt-32 md:pb-28 text-white">
-        <div class="container mx-auto px-4">
+    <section id="home" class="hero-gradient pt-24 pb-20 md:pt-32 md:pb-28 text-white relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-amber-400 rounded-full"></div>
+            <div class="absolute -bottom-48 -left-48 w-96 h-96 bg-amber-500 rounded-full"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-10 md:mb-0 animate-fade-in-up">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 section-title">Find Your Dream <span class="text-amber-400">Home</span></h1>
-                    <p class="text-lg md:text-xl mb-8 text-gray-200">Discover exclusive luxury properties in prime locations with Al Basit Real Estate. Your perfect home awaits.</p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
-                            Explore Properties
+                    <div class="mb-2">
+                        <span class="bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full text-sm font-medium">Since 2008</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 section-title leading-tight">
+                        Find Your <span class="text-amber-400 text-glow">Dream</span> Property
+                    </h1>
+                    <p class="text-xl mb-8 text-gray-200 leading-relaxed">
+                        Discover exclusive luxury properties in prime locations. We specialize in premium real estate solutions with over 15 years of expertise in the market.
+                    </p>
+                    
+                    <!-- Stats -->
+                    <div class="flex space-x-8 mb-8">
+                        <div>
+                            <div class="stat-number">500+</div>
+                            <div class="text-gray-300 text-sm">Properties Sold</div>
+                        </div>
+                        <div>
+                            <div class="stat-number">15+</div>
+                            <div class="text-gray-300 text-sm">Years Experience</div>
+                        </div>
+                        <div>
+                            <div class="stat-number">98%</div>
+                            <div class="text-gray-300 text-sm">Client Satisfaction</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Search Box -->
+                    <div class="search-box rounded-2xl p-6 mb-8">
+                        <h3 class="font-bold text-lg mb-4">Find Your Perfect Property</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Location</label>
+                                <select class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                    <option>Select Location</option>
+                                    <option>DHA Lahore</option>
+                                    <option>Bahria Town</option>
+                                    <option>Gulberg</option>
+                                    <option>Model Town</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Property Type</label>
+                                <select class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                    <option>Any Type</option>
+                                    <option>House</option>
+                                    <option>Apartment</option>
+                                    <option>Villa</option>
+                                    <option>Commercial</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-300 mb-2">Budget</label>
+                                <select class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                    <option>Any Budget</option>
+                                    <option>Under $100,000</option>
+                                    <option>$100,000 - $300,000</option>
+                                    <option>$300,000 - $600,000</option>
+                                    <option>Over $600,000</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-lg font-medium transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-search mr-2"></i> Search Properties
                         </button>
-                        <button class="border-2 border-white hover:bg-white/10 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
-                            Contact Agent
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300 shadow-lg flex items-center justify-center">
+                            <i class="fas fa-home mr-2"></i> Explore Properties
+                        </button>
+                        <button class="border-2 border-white hover:bg-white/10 text-white px-6 py-3 rounded-lg font-medium transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-play-circle mr-2"></i> Watch Video
                         </button>
                     </div>
                 </div>
                 <div class="md:w-1/2 animate-fade-in-up">
-                    <div class="relative">
-                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-xl">
-                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
-                                 alt="Luxury Home" class="rounded-xl w-full h-64 object-cover">
-                        </div>
-                        <div class="absolute -bottom-6 -left-6 bg-white text-gray-800 p-4 rounded-xl shadow-lg w-3/4">
-                            <h3 class="font-bold text-lg mb-2">Premium Villa in DHA</h3>
-                            <div class="flex justify-between text-sm">
+                    <div class="relative floating">
+                        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Luxury Modern Villa" class="hero-image w-full h-auto">
+                        <div class="absolute -bottom-6 -left-6 bg-white text-gray-800 p-6 rounded-2xl shadow-2xl w-3/4">
+                            <h3 class="font-bold text-xl mb-2">Premium Villa in DHA</h3>
+                            <div class="flex justify-between text-sm mb-3">
                                 <span><i class="fas fa-bed text-amber-500 mr-1"></i> 5 Bedrooms</span>
                                 <span><i class="fas fa-bath text-amber-500 mr-1"></i> 4 Bathrooms</span>
                                 <span><i class="fas fa-ruler-combined text-amber-500 mr-1"></i> 4500 sq ft</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-gray-800">$850,000</span>
+                                <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition duration-300 text-sm">
+                                    View Details
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -125,30 +258,30 @@
     <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">About Al Basit Real Estate</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Why Choose Al Basit Real Estate?</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">With over 15 years of experience, we specialize in luxury properties and premium real estate solutions.</p>
             </div>
             
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-10 md:mb-0">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-gray-100 rounded-xl p-4 h-48 flex flex-col justify-center items-center text-center">
-                            <i class="fas fa-home text-4xl text-amber-500 mb-4"></i>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="bg-gray-50 rounded-2xl p-6 h-48 flex flex-col justify-center items-center text-center hover:shadow-lg transition duration-300">
+                            <i class="fas fa-home text-5xl text-amber-500 mb-4"></i>
                             <h3 class="font-bold text-lg mb-2">Luxury Homes</h3>
                             <p class="text-gray-600 text-sm">Premium properties in prime locations</p>
                         </div>
-                        <div class="bg-gray-100 rounded-xl p-4 h-48 flex flex-col justify-center items-center text-center">
-                            <i class="fas fa-handshake text-4xl text-amber-500 mb-4"></i>
+                        <div class="bg-gray-50 rounded-2xl p-6 h-48 flex flex-col justify-center items-center text-center hover:shadow-lg transition duration-300">
+                            <i class="fas fa-handshake text-5xl text-amber-500 mb-4"></i>
                             <h3 class="font-bold text-lg mb-2">Trusted Service</h3>
                             <p class="text-gray-600 text-sm">15+ years of real estate expertise</p>
                         </div>
-                        <div class="bg-gray-100 rounded-xl p-4 h-48 flex flex-col justify-center items-center text-center">
-                            <i class="fas fa-map-marker-alt text-4xl text-amber-500 mb-4"></i>
+                        <div class="bg-gray-50 rounded-2xl p-6 h-48 flex flex-col justify-center items-center text-center hover:shadow-lg transition duration-300">
+                            <i class="fas fa-map-marker-alt text-5xl text-amber-500 mb-4"></i>
                             <h3 class="font-bold text-lg mb-2">Prime Locations</h3>
                             <p class="text-gray-600 text-sm">Properties in the most desirable areas</p>
                         </div>
-                        <div class="bg-gray-100 rounded-xl p-4 h-48 flex flex-col justify-center items-center text-center">
-                            <i class="fas fa-award text-4xl text-amber-500 mb-4"></i>
+                        <div class="bg-gray-50 rounded-2xl p-6 h-48 flex flex-col justify-center items-center text-center hover:shadow-lg transition duration-300">
+                            <i class="fas fa-award text-5xl text-amber-500 mb-4"></i>
                             <h3 class="font-bold text-lg mb-2">Award Winning</h3>
                             <p class="text-gray-600 text-sm">Recognized for excellence in real estate</p>
                         </div>
@@ -160,25 +293,41 @@
                     <p class="text-gray-600 mb-6">At Al Basit Real Estate, we understand that finding the perfect property is more than just a transaction - it's about finding a place to call home, an investment for your future, and a space that reflects your lifestyle.</p>
                     <p class="text-gray-600 mb-8">Our team of experienced professionals is dedicated to providing personalized service, market expertise, and seamless transactions for both buyers and sellers.</p>
                     
-                    <div class="flex items-center space-x-4 mb-6">
-                        <div class="bg-amber-100 text-amber-800 p-3 rounded-lg">
-                            <i class="fas fa-check-circle"></i>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-amber-100 text-amber-800 p-3 rounded-lg">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Premium Property Portfolio</h4>
+                                <p class="text-gray-600 text-sm">Exclusive selection of luxury homes and apartments</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4 class="font-bold">Premium Property Portfolio</h4>
-                            <p class="text-gray-600 text-sm">Exclusive selection of luxury homes and apartments</p>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-amber-100 text-amber-800 p-3 rounded-lg">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Personalized Service</h4>
+                                <p class="text-gray-600 text-sm">Tailored solutions to meet your specific needs</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-amber-100 text-amber-800 p-3 rounded-lg">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Market Expertise</h4>
+                                <p class="text-gray-600 text-sm">In-depth knowledge of local real estate markets</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="flex items-center space-x-4">
-                        <div class="bg-amber-100 text-amber-800 p-3 rounded-lg">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Personalized Service</h4>
-                            <p class="text-gray-600 text-sm">Tailored solutions to meet your specific needs</p>
-                        </div>
-                    </div>
+                    <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300 shadow-md">
+                        Learn More About Us
+                    </button>
                 </div>
             </div>
         </div>
@@ -198,7 +347,7 @@
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
                              alt="Modern Villa" class="w-full h-56 object-cover">
-                        <div class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <div class="property-badge bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                             For Sale
                         </div>
                     </div>
@@ -226,7 +375,7 @@
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
                              alt="Luxury Apartment" class="w-full h-56 object-cover">
-                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <div class="property-badge bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                             For Rent
                         </div>
                     </div>
@@ -254,7 +403,7 @@
                     <div class="relative">
                         <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
                              alt="Modern House" class="w-full h-56 object-cover">
-                        <div class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <div class="property-badge bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-medium">
                             For Sale
                         </div>
                     </div>
@@ -279,44 +428,52 @@
             </div>
             
             <div class="text-center mt-12">
-                <button class="border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                <button class="border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white px-6 py-3 rounded-lg font-medium transition duration-300 shadow-md">
                     View All Properties
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
+    <!-- Agents Section -->
+    <section id="agents" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Our Services</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Comprehensive real estate solutions tailored to your needs.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Meet Our Agents</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our experienced real estate agents are ready to help you find your dream property.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 rounded-2xl p-8 text-center hover:shadow-lg transition duration-300">
-                    <div class="w-16 h-16 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-home text-2xl"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Agent 1 -->
+                <div class="agent-card bg-gray-50 rounded-2xl p-6 flex items-center space-x-6">
+                    <div class="w-24 h-24 bg-amber-500 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                        WA
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Property Sales</h3>
-                    <p class="text-gray-600">We help you buy and sell properties with our extensive market knowledge and negotiation skills.</p>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">Waqar Ashraf</h3>
+                        <p class="text-amber-500 mb-2">Senior Real Estate Agent</p>
+                        <p class="text-gray-600 text-sm mb-3">Specializing in luxury properties in DHA and Bahria Town.</p>
+                        <div class="flex items-center text-gray-500">
+                            <i class="fas fa-phone mr-2"></i>
+                            <span>+92 321 1417347</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="bg-gray-50 rounded-2xl p-8 text-center hover:shadow-lg transition duration-300">
-                    <div class="w-16 h-16 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-key text-2xl"></i>
+                <!-- Agent 2 -->
+                <div class="agent-card bg-gray-50 rounded-2xl p-6 flex items-center space-x-6">
+                    <div class="w-24 h-24 bg-amber-500 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                        SH
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Property Rentals</h3>
-                    <p class="text-gray-600">Find your perfect rental property or list your property with our professional management services.</p>
-                </div>
-                
-                <div class="bg-gray-50 rounded-2xl p-8 text-center hover:shadow-lg transition duration-300">
-                    <div class="w-16 h-16 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-chart-line text-2xl"></i>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">Shafqat Husain</h3>
+                        <p class="text-amber-500 mb-2">Property Investment Consultant</p>
+                        <p class="text-gray-600 text-sm mb-3">Expert in commercial properties and real estate investments.</p>
+                        <div class="flex items-center text-gray-500">
+                            <i class="fas fa-phone mr-2"></i>
+                            <span>+92 333 5126070</span>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Investment Consulting</h3>
-                    <p class="text-gray-600">Get expert advice on real estate investments to maximize your returns and build your portfolio.</p>
                 </div>
             </div>
         </div>
@@ -414,7 +571,7 @@
                             <textarea rows="4" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
                         </div>
                         
-                        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-lg font-medium transition duration-300">
+                        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-lg font-medium transition duration-300 shadow-md">
                             Send Message
                         </button>
                     </form>
@@ -429,10 +586,12 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
                     <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold">AB</div>
+                        <div class="logo-container">
+                            <span class="logo-text">AB</span>
+                        </div>
                         <div>
                             <h2 class="text-xl font-bold">Al Basit Real Estate</h2>
-                            <p class="text-gray-400 text-sm">Luxury Properties</p>
+                            <p class="text-gray-400 text-sm">Luxury Properties & Investments</p>
                         </div>
                     </div>
                     <p class="text-gray-400 max-w-md">Your trusted partner for premium real estate solutions in Pakistan's most desirable locations.</p>
@@ -464,65 +623,26 @@
         // GSAP Animations
         document.addEventListener('DOMContentLoaded', function() {
             // Register ScrollTrigger plugin
-            gsap.registerPlugin(ScrollTrigger);
+            gsap.registerPlugin(ScrollTrigger, TextPlugin);
             
             // Hero section animation
             gsap.from('.animate-fade-in-up', {
-                duration: 1,
+                duration: 1.2,
                 y: 50,
                 opacity: 0,
                 stagger: 0.3,
-                ease: "power3.out"
+                ease: "power3.out",
+                delay: 0.2
+            });
+            
+            // Floating animation for hero image
+            gsap.to('.floating', {
+                y: 15,
+                duration: 2,
+                repeat: -1,
+                yoyo: true,
+                ease: "power1.inOut"
             });
             
             // Section animations
-            gsap.utils.toArray('section').forEach(section => {
-                gsap.from(section, {
-                    scrollTrigger: {
-                        trigger: section,
-                        start: "top 80%",
-                        end: "bottom 20%",
-                        toggleActions: "play none none reverse"
-                    },
-                    y: 50,
-                    opacity: 0,
-                    duration: 1,
-                    ease: "power3.out"
-                });
-            });
-            
-            // Property card animations
-            gsap.utils.toArray('.property-card').forEach(card => {
-                gsap.from(card, {
-                    scrollTrigger: {
-                        trigger: card,
-                        start: "top 85%",
-                        end: "bottom 20%",
-                        toggleActions: "play none none reverse"
-                    },
-                    y: 30,
-                    opacity: 0,
-                    duration: 0.8,
-                    ease: "power2.out"
-                });
-            });
-            
-            // Service item animations
-            gsap.utils.toArray('.bg-gray-50.rounded-2xl').forEach(service => {
-                gsap.from(service, {
-                    scrollTrigger: {
-                        trigger: service,
-                        start: "top 85%",
-                        end: "bottom 20%",
-                        toggleActions: "play none none reverse"
-                    },
-                    y: 30,
-                    opacity: 0,
-                    duration: 0.8,
-                    ease: "power2.out"
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+            gsap.utils
