@@ -2,111 +2,527 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AL-BASITreal</title>
-    
-    <link rel="stylesheet" href="style.css">
+    <title>Al Basit Real Estate | Luxury Properties</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+        }
+        .property-card {
+            transition: all 0.3s ease;
+        }
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #f59e0b;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .animate-fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <nav class="navbar background">
-            <img src="Snapchat-2011151323.jpg" alt="logo" class="logo HOME" width="70px">
-            <h1>AL-Basit real estate</h1>
-            <div class="nav-brand">
-                <ul class="nav-manu">
-                    <li class="nav-link">
-                    
-                        <a href="#HOME" class="h-nav">HOME</a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#ABOUT" class="h-nav">ABOUT</a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#SERVICES" class="h-nav">SERVICES</a>
-                    </li>
-                    <li class="nav-link">
-                        <a href="#CONTACT" class="h-nav">CONTACT</a>
-                    </li>
-                    <div class="right-nav">
-                        <input type="text" placeholder="TEXT HERE" class="serech-1">
-                        <input type="button" value="Click Here" class="btn-1">
-                    </div>
-                </ul>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold text-xl">AB</div>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-800">Al Basit Real Estate</h1>
+                    <p class="text-xs text-gray-600">Luxury Properties</p>
+                </div>
             </div>
-            <nav class="button-1">
-            <input type="button" value="YOU TUBE" class="button-1 btn"<link rel="youtube" type=" video"  type="">>
-            </nav>
-            <nan class="hiding-1">
-                <h1>AL-Basit</h1>
-               <p class="para-1">Residences Immobilier, specialist of prestige properties and luxury villas for sale. The finest residences for sale. Website of the prestige magazine. 
-                <img src="Snapchat-2011151323.jpg" alt="logo" width="120px" class="logo">
-               </p>
-            </nan>
-         <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-         </div>
-        </nav>
-    </header>
-    <section class="sec-1">
-        <h1 class="hiding-2">YOU CAN SALE AND BY PROPERTY ?</h1>
-        <p class="para-2">
-            Find a wide range of Houses for Sale in DHA Defence Islamabad Islamabad with AL- BASIT , Pakistan's leading property portal
-            <img src="https://media.zameen.com/thumbnails/48662329-800x600.jpeg" alt="logo" class="img-1" width="120px">
-    </p>
-    
-    </section>
-    <section class="sec-2">
-    <h2 class="hiding-2"> WHO YOU CAN GET HOUSES ON RENT  </h2>
-    <p class="para-2">
-    <img src="https://th.bing.com/th/id/R.6ceb1952f7b1ade23ec63d9e248a5fc4?rik=o%2fKDlEhfHmMiKg&riu=http%3a%2f%2ffatse.com.pk%2foc-content%2fuploads%2f4%2f498.jpg&ehk=rz2CUmfyq8Xg0OlLvje334bifIdN%2ftFH80pYBlnsdd0%3d&risl=&pid=ImgRaw&r=0" alt="logo" width="120px" class="img2">
-    If you want to purchase a house in DHA, then go for buying 10 marla house for rent in DHA phase
-    </p>
-    </section>
-    <!-- <section class="sec-3" id="ABOUT">
-        <h1 class="hiding-2">WHATs ABOUT PAKISTAN?</h1>
-        <p class="para-2">
-            repudiandae pariatur velit vel architecto omnis deserunt provident reprehenderit corrupti laborum esse autem tempor
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat veniam aperiam ducimus sequi modi similique id qui, sit iure ogo/10.
-            <img src="logo/7.jpg" alt="logo" class="img-1" width="120px">
-    </p>
-    
-    </section>
-    <section class="sec-4">
-    <h2 class="hiding-2">WICH TYPE OF PEOPLE LIVE IN </h2>
-    <p class="para-2">
-    <img src="logo/13.jpg" alt="logo" width="120px" class="img2">
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem dolores neque voluptatum placeat ipsum obcaecati accusamus deserunt alias. Laborum, veniam?hjiuFHSBNCJIINFKJ  FHIWEPH FEHFP fphf uih cuiHEPFEUH IPHEIUH FIHFIU
-    </p>
-    </section> -->
-="box"></div>
-<div class="box-email"><a href="mailto:waqargondal894@gmail.com" class="box-mail">CONTACT with email</a>
-w</div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-700 font-medium">Home</a>
+                <a href="#about" class="nav-link text-gray-700 font-medium">About</a>
+                <a href="#properties" class="nav-link text-gray-700 font-medium">Properties</a>
+                <a href="#services" class="nav-link text-gray-700 font-medium">Services</a>
+                <a href="#contact" class="nav-link text-gray-700 font-medium">Contact</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button class="hidden md:block bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition duration-300">
+                    Schedule a Tour
+                </button>
+                <button class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-<div class="box-mail"><address>03211417347 whatsapp number waqar ashraf </address></div>
-    <div class="box"></div>
-<div class="box-mail"><address>03335126070 shafqat husain </address></div>
-    <div class="box"></div>
-<section class="last-section " id="CONTACT"></section>
-    <h3 class="input background">
-        CONTACT
-    </h3>
-    <div class="adress">
-        lo
-    </div>
-   <div class="c-1 background">
-    <input type="Name" class="c-last name-last" placeholder="YOUR Name">
-    <input type="number" class="c-last number-last" placeholder="PHONE NUMBER">
-    <input type="email" class="c-last email-last" placeholder="Email adress">
-    <input type="password" class="c-last pasword-last" placeholder="Pasworld">
-  <input type="button" value="submit" class="last-btn">
-   </div>
-   </section>
-   <div class="last-information">
-    
-   </div>
-    <script src="script.js"></script>
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient pt-24 pb-20 md:pt-32 md:pb-28 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 animate-fade-in-up">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 section-title">Find Your Dream <span class="text-amber-400">Home</span></h1>
+                    <p class="text-lg md:text-xl mb-8 text-gray-200">Discover exclusive luxury properties in prime locations with Al Basit Real Estate. Your perfect home awaits.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button class="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                            Explore Properties
+                        </button>
+                        <button class="border-2 border-white hover:bg-white/10 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                            Contact Agent
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 animate-fade-in-up">
+                    <div class="relative">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                                 alt="Luxury Home" class="rounded-xl w-full h-64 object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -left-6 bg-white text-gray-800 p-4 rounded-xl shadow-lg w-3/4">
+                            <h3 class="font-bold text-lg mb-2">Premium Villa in DHA</h3>
+                            <div class="flex justify-between text-sm">
+                                <span><i class="fas fa-bed text-amber-500 mr-1"></i> 5 Bedrooms</span>
+                                <span><i class="fas fa-bath text-amber-500 mr-1"></i> 4 Bathrooms</span>
+                                <span><i class="fas fa-ruler-combined text-amber-500 mr-1"></i> 4500 sq ft</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">About Al Basit Real Estate</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">With over 15 years of experience, we specialize in luxury properties and premium real estate solutions.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-100 rounded-xl p-4 h-48 flex flex-col justify-center items-center text-center">
+                            <i class="fas fa-home text-4xl text-amber-500 mb-4"></i>
+                            <h3 class="font-bold text-lg mb-2">Luxury Homes</h3>
+                            <p class="text-gray-600 text-sm">Premium properties in prime locations</p>
+                        </div>
+                        <div class="bg-gray-100 rounded-xl p-4 h-48 flex flex-col justify-center items-center text-center">
+                            <i class="fas fa-handshake text-4xl text-amber-500 mb-4"></i>
+                            <h3 class="font-bold text-lg mb-2">Trusted Service</h3>
+                            <p class="text-gray-600 text-sm">15+ years of real estate expertise</p>
+                        </div>
+                        <div class="bg-gray-100 rounded-xl p-4 h-48 flex flex-col justify-center items-center text-center">
+                            <i class="fas fa-map-marker-alt text-4xl text-amber-500 mb-4"></i>
+                            <h3 class="font-bold text-lg mb-2">Prime Locations</h3>
+                            <p class="text-gray-600 text-sm">Properties in the most desirable areas</p>
+                        </div>
+                        <div class="bg-gray-100 rounded-xl p-4 h-48 flex flex-col justify-center items-center text-center">
+                            <i class="fas fa-award text-4xl text-amber-500 mb-4"></i>
+                            <h3 class="font-bold text-lg mb-2">Award Winning</h3>
+                            <p class="text-gray-600 text-sm">Recognized for excellence in real estate</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12">
+                    <h3 class="text-2xl font-bold mb-6 section-title">Your Trusted Real Estate Partner</h3>
+                    <p class="text-gray-600 mb-6">At Al Basit Real Estate, we understand that finding the perfect property is more than just a transaction - it's about finding a place to call home, an investment for your future, and a space that reflects your lifestyle.</p>
+                    <p class="text-gray-600 mb-8">Our team of experienced professionals is dedicated to providing personalized service, market expertise, and seamless transactions for both buyers and sellers.</p>
+                    
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="bg-amber-100 text-amber-800 p-3 rounded-lg">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Premium Property Portfolio</h4>
+                            <p class="text-gray-600 text-sm">Exclusive selection of luxury homes and apartments</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-amber-100 text-amber-800 p-3 rounded-lg">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Personalized Service</h4>
+                            <p class="text-gray-600 text-sm">Tailored solutions to meet your specific needs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section id="properties" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Featured Properties</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore our handpicked selection of premium properties in the most desirable locations.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Property 1 -->
+                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Modern Villa" class="w-full h-56 object-cover">
+                        <div class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            For Sale
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Modern Villa in DHA Phase 5</h3>
+                        <p class="text-gray-600 mb-4">A stunning contemporary villa with premium finishes and spacious living areas.</p>
+                        
+                        <div class="flex justify-between text-gray-500 mb-4">
+                            <span><i class="fas fa-bed text-amber-500 mr-1"></i> 4 Beds</span>
+                            <span><i class="fas fa-bath text-amber-500 mr-1"></i> 3 Baths</span>
+                            <span><i class="fas fa-ruler-combined text-amber-500 mr-1"></i> 3200 sq ft</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-800">$850,000</span>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 2 -->
+                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Luxury Apartment" class="w-full h-56 object-cover">
+                        <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            For Rent
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Luxury Apartment in Bahria Town</h3>
+                        <p class="text-gray-600 mb-4">Elegant apartment with modern amenities and breathtaking city views.</p>
+                        
+                        <div class="flex justify-between text-gray-500 mb-4">
+                            <span><i class="fas fa-bed text-amber-500 mr-1"></i> 3 Beds</span>
+                            <span><i class="fas fa-bath text-amber-500 mr-1"></i> 2 Baths</span>
+                            <span><i class="fas fa-ruler-combined text-amber-500 mr-1"></i> 1800 sq ft</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-800">$2,500/mo</span>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Property 3 -->
+                <div class="property-card bg-white rounded-2xl overflow-hidden shadow-md">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Modern House" class="w-full h-56 object-cover">
+                        <div class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            For Sale
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Contemporary House in Gulberg</h3>
+                        <p class="text-gray-600 mb-4">A beautifully designed home with an open floor plan and premium finishes.</p>
+                        
+                        <div class="flex justify-between text-gray-500 mb-4">
+                            <span><i class="fas fa-bed text-amber-500 mr-1"></i> 5 Beds</span>
+                            <span><i class="fas fa-bath text-amber-500 mr-1"></i> 4 Baths</span>
+                            <span><i class="fas fa-ruler-combined text-amber-500 mr-1"></i> 4200 sq ft</span>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-gray-800">$1,200,000</span>
+                            <button class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg transition duration-300">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="border-2 border-amber-500 text-amber-500 hover:bg-amber-500 hover:text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                    View All Properties
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Our Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Comprehensive real estate solutions tailored to your needs.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-2xl p-8 text-center hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-home text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Property Sales</h3>
+                    <p class="text-gray-600">We help you buy and sell properties with our extensive market knowledge and negotiation skills.</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-2xl p-8 text-center hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-key text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Property Rentals</h3>
+                    <p class="text-gray-600">Find your perfect rental property or list your property with our professional management services.</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-2xl p-8 text-center hover:shadow-lg transition duration-300">
+                    <div class="w-16 h-16 bg-amber-100 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Investment Consulting</h3>
+                    <p class="text-gray-600">Get expert advice on real estate investments to maximize your returns and build your portfolio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 section-title">Contact Us</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Get in touch with our team for personalized real estate assistance.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-8">
+                    <h3 class="text-2xl font-bold mb-6">Get In Touch</h3>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Office Address</h4>
+                                <p class="text-gray-300">DHA Phase 5, Commercial Street, Lahore, Pakistan</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Phone Numbers</h4>
+                                <p class="text-gray-300">Waqar Ashraf: +92 321 1417347</p>
+                                <p class="text-gray-300">Shafqat Husain: +92 333 5126070</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Email Address</h4>
+                                <p class="text-gray-300">waqargondal894@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800 rounded-xl p-6">
+                        <h4 class="font-bold text-lg mb-4">Why Choose Al Basit?</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-amber-500 mr-2"></i>
+                                <span>15+ Years of Experience</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-amber-500 mr-2"></i>
+                                <span>Premium Property Portfolio</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-amber-500 mr-2"></i>
+                                <span>Personalized Service</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-amber-500 mr-2"></i>
+                                <span>Market Expertise</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form class="bg-gray-800 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-300 mb-2">Your Name</label>
+                            <input type="text" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-300 mb-2">Phone Number</label>
+                            <input type="text" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-gray-300 mb-2">Email Address</label>
+                            <input type="email" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-300 mb-2">Message</label>
+                            <textarea rows="4" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 rounded-lg font-medium transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 border-t border-gray-700">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center text-white font-bold">AB</div>
+                        <div>
+                            <h2 class="text-xl font-bold">Al Basit Real Estate</h2>
+                            <p class="text-gray-400 text-sm">Luxury Properties</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 max-w-md">Your trusted partner for premium real estate solutions in Pakistan's most desirable locations.</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-amber-500 transition duration-300">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Al Basit Real Estate. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // GSAP Animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Register ScrollTrigger plugin
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Hero section animation
+            gsap.from('.animate-fade-in-up', {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                stagger: 0.3,
+                ease: "power3.out"
+            });
+            
+            // Section animations
+            gsap.utils.toArray('section').forEach(section => {
+                gsap.from(section, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+            
+            // Property card animations
+            gsap.utils.toArray('.property-card').forEach(card => {
+                gsap.from(card, {
+                    scrollTrigger: {
+                        trigger: card,
+                        start: "top 85%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: "power2.out"
+                });
+            });
+            
+            // Service item animations
+            gsap.utils.toArray('.bg-gray-50.rounded-2xl').forEach(service => {
+                gsap.from(service, {
+                    scrollTrigger: {
+                        trigger: service,
+                        start: "top 85%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: "power2.out"
+                });
+            });
+        });
+    </script>
 </body>
 </html>
